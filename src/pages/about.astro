@@ -1,11 +1,41 @@
+---
+import "../styles/global.css";
+const pageTitle = "About Astro";
+const identity = {
+	name: "HitchHiker42",
+	planet: "golden bowl",
+	occupation:"Writer",
+	hobbies: ["Reading", "Writing", "Exploring","hitchHiking"],
+}
+
+const skills = ["Astro", "JavaScript", "CSS", "HTML", "Node.js", "React", "Tailwind CSS"];
+const enjoying = true;
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
 <html>
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="generator" content={Astro.generator} />
-	<title>About Astro</title>
-	</head>
+	<title>{pageTitle}</title>
+	<style define:vars={{skillColor,fontWeight, textCase}}>
+		.title{
+			color:purple;
+			font-size:4rem;
+			text-transform: ;
+		}
+
+		.skill{
+			color:var(--skillColor);
+			font-weight: var(--fontWeight);
+			text-transform: var(--textCase);
+		}
+	</style>
+</head>
 	<body>
 		<nav>
 			<ul>
@@ -14,8 +44,21 @@
 				<li><a href="/blog">Blog</a></li>
 			</ul>
 		</nav>
-		<h1>About Astro</h1>
+		<h1 class="title">{pageTitle}</h1>
 		<p>Astro is a modern static site generator that allows you to build fast, optimized websites using your favorite frameworks and libraries.</p>
+
+		<p>Few facts about me</p>
+		<ul>
+			<li>Name: {identity.name}</li>
+			<li>Planet: {identity.planet}</li>
+			<li>Occupation: {identity.occupation}</li>
+			<li>Hobbies: {identity.hobbies.join(", ")}</li>
+		</ul>
+		<p>My skills: </p>
+		<ul>
+			{skills.map((skill)=> <li class="skill">{skill}</li>) }
+		</ul>
+		{enjoying && <p>I'm enjoying learning Astro!</p>}
 		<p>Learn more about Astro at <a href="https://astro.build">astro.build</a>.</p>
 	</body>
 </html>
