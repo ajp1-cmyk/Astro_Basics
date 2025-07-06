@@ -1,5 +1,8 @@
 ---
+import Header from "../components/Header.astro";
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+
 const pageTitle = "About Astro";
 const identity = {
 	name: "HitchHiker42",
@@ -37,13 +40,8 @@ const textCase = "uppercase";
 	</style>
 </head>
 	<body>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/blog">Blog</a></li>
-			</ul>
-		</nav>
+		<div class="content">
+			<Header />
 		<h1 class="title">{pageTitle}</h1>
 		<p>Astro is a modern static site generator that allows you to build fast, optimized websites using your favorite frameworks and libraries.</p>
 
@@ -60,5 +58,11 @@ const textCase = "uppercase";
 		</ul>
 		{enjoying && <p>I'm enjoying learning Astro!</p>}
 		<p>Learn more about Astro at <a href="https://astro.build">astro.build</a>.</p>
+		</div>
+
+		<Footer />
+			<script>
+		import "../scripts/menu";
+	</script>
 	</body>
 </html>

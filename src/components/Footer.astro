@@ -1,0 +1,37 @@
+---
+// const platform = "github"
+// const username = "ajp1-cmyk"
+import Social from "./Social.astro"
+---
+
+<footer class="footer">
+		<!-- Learn more about my projects on <a href={`https://www.${platform}.com/${username}`}>platform</a>! -->
+		 <Social platform = "github" username="ajp1-cmyk" />
+		 <Social platform = "twitter" username="ajp1-cmyk" />
+</footer>
+
+<style>
+	.footer {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  padding-inline: 15rem;
+  margin-bottom:-1rem;
+  display: flex;
+  gap:2rem;
+}
+
+</style>
