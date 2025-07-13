@@ -1,28 +1,10 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro"
 const pageTitle = "Home Page";
-import Footer from "../components/Footer.astro";
 ---
+<BaseLayout pageTitle = {pageTitle}>
+	<h1>Awesome blog site</h1>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<div class="content">
-			<Header />
-		<h1>{pageTitle}</h1>
-		<h1>Astro site</h1>
+	pariatur hic dolor repellendus. Accusantium cumque earum nihil reprehenderit sed ipsum deleniti.
 
-		</div>
-	<Footer />
-	</body>
-	<script>
-		import "../scripts/menu";
-	</script>
-</html>
+</BaseLayout>

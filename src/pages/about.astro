@@ -1,7 +1,6 @@
 ---
-import Header from "../components/Header.astro";
 import "../styles/global.css";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Astro";
 const identity = {
@@ -18,51 +17,43 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html>
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<meta name="viewport" content="width=device-width" />
-	<meta name="generator" content={Astro.generator} />
-	<title>{pageTitle}</title>
-	<style define:vars={{skillColor,fontWeight, textCase}}>
-		.title{
+<style define:vars={{skillColor,fontWeight, textCase}}>
+	.title{
 			color:purple;
 			font-size:4rem;
 			text-transform: ;
-		}
+	}
 
-		.skill{
+	.skill{
 			color:var(--skillColor);
 			font-weight: var(--fontWeight);
 			text-transform: var(--textCase);
-		}
-	</style>
-</head>
-	<body>
-		<div class="content">
-			<Header />
-		<h1 class="title">{pageTitle}</h1>
+	}
+</style>
+
+<BaseLayout pageTitle = {pageTitle}>
+	<div class="flex flex-col gap-5">
+
 		<p>Astro is a modern static site generator that allows you to build fast, optimized websites using your favorite frameworks and libraries.</p>
 
-		<p>Few facts about me</p>
-		<ul>
-			<li>Name: {identity.name}</li>
-			<li>Planet: {identity.planet}</li>
-			<li>Occupation: {identity.occupation}</li>
-			<li>Hobbies: {identity.hobbies.join(", ")}</li>
-		</ul>
-		<p>My skills: </p>
-		<ul>
-			{skills.map((skill)=> <li class="skill">{skill}</li>) }
-		</ul>
-		{enjoying && <p>I'm enjoying learning Astro!</p>}
-		<p>Learn more about Astro at <a href="https://astro.build">astro.build</a>.</p>
-		</div>
+		<div>
 
-		<Footer />
-			<script>
-		import "../scripts/menu";
-	</script>
-	</body>
-</html>
+			<p>Few facts about me</p>
+			<ul>
+				<li>Name: {identity.name}</li>
+				<li>Planet: {identity.planet}</li>
+				<li>Occupation: {identity.occupation}</li>
+				<li>Hobbies: {identity.hobbies.join(", ")}</li>
+			</ul>
+		</div>
+		<div>
+			<p>My skills: </p>
+			<ul>
+				{skills.map((skill)=> <li class="skill">{skill}</li>) }
+			</ul>
+		</div>
+			{enjoying && <p>I'm enjoying learning Astro!</p>}
+		<p>Learn more about Astro at <a href="https://astro.build">astro.build</a>.</p>
+	</div>
+
+</BaseLayout>
