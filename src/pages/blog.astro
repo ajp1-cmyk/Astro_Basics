@@ -2,12 +2,14 @@
 import "../styles/global.css";
 const pageTitle = "Blog Posts";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
 const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager:true}))
 ---
+
 <BaseLayout pageTitle = {pageTitle}>
 	<p class="underline underline-offset-4">Welcome to the Astro blog! Here you can find articles and posts about various topics related to Astro and web development.</p>
 	<ul class="flex flex-col gap-2 text-pink-900 mt-10 mb-10">
-			{allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+			{allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
 		</ul>
 		<p>Stay tuned for more updates and content!</p>
 </BaseLayout>
