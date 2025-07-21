@@ -1,0 +1,24 @@
+---
+import BlogPost from "../../components/BlogPost.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "Tag Index";
+const allPosts = Object.values(import.meta.glob("../posts/*.md", {eager: true}));
+const tags = [...new Set(allPosts.map((post: any)=> post.frontmatter.tags).flat())]
+---
+
+<BaseLayout pageTitle = {pageTitle}>
+
+	<div class="tag-list w-200 pt-5 pb-5 pl-3">
+		<ul class="grid grid-cols-4 gap-3 w-196 p-3">
+			{tags.map((tag) => <BlogPost url={`tags/${tag}`} title={tag}/>)}
+		</ul>
+	</div>
+	<style>
+		.tag-list{
+background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+	</style>
+</BaseLayout>

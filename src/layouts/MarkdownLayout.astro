@@ -1,17 +1,28 @@
 ---
+import BlogPost from "../components/BlogPost.astro";
 import "../styles/global.css"
 import "./BaseLayout.astro"
 import BaseLayout from "./BaseLayout.astro";
 const {frontmatter} = Astro.props;
+
+const tags = frontmatter.tags;
 ---
 <BaseLayout pageTitle = {frontmatter.title} >
 <div class="blog-container bg-purple-600 pl-10 pt-10 pr-10 min-h-120 text-violet-200">
 	<meta charset="utf-8" />
-
+	<p class="pb-1"><em>{frontmatter.description}</em></p>
 	<p>Written by: {frontmatter.author}</p>
 	<p>Published on: {frontmatter.date}</p>
-	<div  class="markdown-content pt-10 grid grid-cols-1 gap-3">
+
+	<div class="tag-list w-200 p-1 mt-2">
+		<ul class="flex gap-1">
+			{tags.map((tag: any) => <BlogPost class="tag" url={`../tags/${tag}`} title={tag}/>)}
+		</ul>
+	</div>
+
+	<div  class="markdown-content pt-5 grid grid-cols-1 gap-3">
 		<slot />
 	</div>
+
 </BaseLayout>
 </div>
